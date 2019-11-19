@@ -1,0 +1,36 @@
+swagger: "2.0"
+info:
+  description: "WhiteGlove API for identifying and adding candidate related domains for a scorecard."
+  version: "1.0.0"
+  title: "WhiteGlove API"
+basePath: "/whiteglove"
+schemes:
+- "https"
+paths:
+  /domains:
+    post:
+      tags:
+      - "domains"
+      summary: "Start candidate domain process"
+      description: ""
+      operationId: "findCandidates"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of domains to search"
+        required: true
+        schema:
+          $ref: "#/definitions/Domain"
+      responses:
+        405:
+          description: "Invalid input"
+definitions:
+  Domain:
+    type: "object"
+    properties:
+      id:
+        type: "string"
